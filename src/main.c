@@ -23,17 +23,14 @@ int main(int, char **)
         CONSOLE_SCREEN_BUFFER_INFO csbi = get_csbi();
         size_t columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
         size_t rows = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-        char buffer[rows][columns];
-        for (size_t row = 0; row < rows; row++)
+        char buffer[rows * columns];
+        for (size_t idx = 0; idx < rows * columns; idx++)
         {
-            for (size_t col = 0; col < columns; col++)
+            buffer[idx] = buf_ch;
+            buf_ch++;
+            if (buf_ch > '9')
             {
-                buffer[row][col] = buf_ch;
-                buf_ch++;
-                if (buf_ch > '9')
-                {
-                    buf_ch = '0';
-                }
+                buf_ch = '0';
             }
         }
         blit(buffer);
