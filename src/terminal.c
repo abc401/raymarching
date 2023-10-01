@@ -25,7 +25,7 @@ CONSOLE_SCREEN_BUFFER_INFO get_csbi()
 
 void setCursorPos(int row, int col)
 {
-    printf("\033[%d;%dH", col, row);
+    printf("\033[%d;%dH", row, col);
 }
 
 void disableRawMode()

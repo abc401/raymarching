@@ -1,23 +1,17 @@
 #ifndef SDF_H
+
 #define SDF_H
+#include "vec.h"
 
-typedef double rational;
-
-typedef struct Vec2
-{
-    rational x;
-    rational y;
-} Vec2;
-
-rational Vec2_dist(Vec2 vec1, Vec2 vec2);
+#define MAX_SDF 1000
+#define MIN_SDF 0.0001
 
 typedef struct Circle
 {
-    Vec2 center;
+    Vec3 center;
     rational radius;
 
 } Circle;
 
-rational Circle_sdf(Circle circle, Vec2 point);
-
+rational Circle_sdf(Circle circle, Vec3 point);
 #endif // SDF_H
